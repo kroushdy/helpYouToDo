@@ -1,0 +1,71 @@
+
+<h1>WELCOME TO LSLRT</h1>
+
+<button (click)="showsignin()">Sign In</button>
+<button (click)="showsignup()">Sign Up</button>
+
+
+
+<div *ngIf="sign_in">  
+<form [formGroup]="signinform" (ngSubmit)="login()">
+  <label class="center-block">Email:
+    <input class="form-control" formControlName="email" type="text">
+  </label>
+  
+  <label class="center-block">Password:
+    <input class="form-control" formControlName="password" type="password">
+  </label>
+  
+
+  <div>
+    <button type="submit"
+            [disabled]="signinform.pristine" class="btn btn-success">Sign In</button> &nbsp;
+   
+  </div>
+
+
+</form>
+
+
+</div>
+
+
+
+<div *ngIf="sign_up">
+<form [formGroup]="signupform" (ngSubmit)="onSubmit()">
+  <label class="center-block">Username:
+    <input class="form-control" formControlName="username">
+  </label>
+  <label class="center-block">Email:
+    <input class="form-control" formControlName="email">
+  </label>
+  <label class="center-block">Password:
+    <input class="form-control" formControlName="password">
+  </label>
+  <label class="center-block">Favorite Coffee:
+    <input class="form-control" formControlName="favcoffee">
+  </label>
+
+
+  <div>
+    <button type="submit"
+            [disabled]="signupform.pristine" class="btn btn-success">Sign Up</button> &nbsp;
+  </div>
+
+
+</form>
+
+
+
+
+</div>
+
+
+<router-outlet></router-outlet>
+
+<!--
+<p>Form value: {{ userform.value | json }}</p>
+<p>Form status: {{ userform.status | json }}</p>
+<p>Name value: {{ userform.get('username').value }}</p>
+<div *ngFor="let username of nameChangeLog">{{username}}</div>
+-->
